@@ -7,6 +7,7 @@ import SmurfForm from './components/SmurfForm';
 import Smurfs from './components/Smurfs';
 import NavBar from './components/NavBar';
 
+const baseUrl = 'https://localhost:3333';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -31,6 +32,19 @@ class App extends Component {
     })
   }
 
+  deleteSmurf = smurfId => {
+    axios
+      .delete(`${baseUrl}/smurfs/${smurfId}`)
+      .then(res => {
+        console.log(res)
+        this.setState({ smurfs: res.data })
+        this.props.history.push('/smurfs')
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
   render() {
     return (
       <div className="App">
@@ -43,7 +57,7 @@ class App extends Component {
       <Link to={`/smurf-form`} style={{textDecoration: 'none', color: 'blue'}}>Add New Smurf Residents Here</Link>
       </div>
       <Route exact path="/smurf-form" render={props => <SmurfForm {...props}/> } />
-      <Route exact path="/smurfs" render={props => <Smurfs {...props} smurfs={this.state.smurfs} />} />
+      <Route exact path="/smurfs" render={props => <Smurfs {...props} smurfs={this.state.smurfs} deleteSmurf={this.deleteSmurf} />} />
       </div>
       </div>
     );
