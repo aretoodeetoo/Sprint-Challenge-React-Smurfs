@@ -7,9 +7,9 @@ import SmurfForm from './components/SmurfForm';
 import Smurfs from './components/Smurfs';
 import Smurf from './components/Smurf';
 import NavBar from './components/NavBar';
-import smurfImg from './helloSmurf.jpg';
+// import smurfImg from './helloSmurf.jpg';
 
-const baseUrl = 'https://localhost:3333';
+const baseUrl = 'http://localhost:3333';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -44,6 +44,7 @@ class App extends Component {
     axios
       .delete(`${baseUrl}/smurfs/${smurfId}`)
       .then(res => {
+        console.log(res);
         this.setState({ smurfs: res.data })
         this.props.history.push('/smurfs')
       })
@@ -63,10 +64,7 @@ class App extends Component {
       <Link to={`/smurfs`} style={{textDecoration: 'none', color: 'blue'}}>Locate Smurf Residents Here</Link>
       <Link to={`/smurf-form`} style={{textDecoration: 'none', color: 'blue'}}>Add New Smurf Residents Here</Link>
       </div>
-      <div homeImage>
-      <img src={smurfImg} alt="waving smurf"/>
-      </div>
-      <Route exact path="/smurf-form" render={props => <SmurfForm {...props}/> } />
+      <Route exact path="/smurf-form" render={props => <SmurfForm {...props} smurfs={this.state.smurfs}/> } />
       <Route exact path="/smurfs" render={props => <Smurfs {...props} smurfs={this.state.smurfs} deleteSmurf={this.deleteSmurf} />} />
       <Route path="/smurfs/:smurfId" render={props => <Smurf {...props} deleteSmurf={this.deleteSmurf} smurfs={this.state.smurfs}/> } />
       </div>

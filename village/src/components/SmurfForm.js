@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import './SmurfForm.css';
+import helloSmurf from '../helloSmurf.jpg';
 
 const baseUrl = 'http://localhost:3333';
 
@@ -95,6 +96,7 @@ class SmurfForm extends Component {
           />
           <button type="submit" className="addFormButton">Add to the village</button>
         </form>
+        <img className="formSmurf" src={helloSmurf} alt="waving Smurf"/>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import './SmurfVillage.css';
 
 const Smurf = props => {
 

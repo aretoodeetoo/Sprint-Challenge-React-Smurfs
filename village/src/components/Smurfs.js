@@ -7,11 +7,15 @@ import Smurf from './Smurf';
 // const baseUrl = 'https://localhost:3333';
 
 class Smurfs extends Component {
+  // constructor(props){
+  //   super(props);
+  // }
+
   render() {
     return (
       <div className="Smurfs">
         <h1 className="villageHeader">Smurf Village</h1>
-        <ul>
+        <div className="smurfContainer">
           {this.props.smurfs.map(smurf => {
             return (
               <Smurf
@@ -24,7 +28,7 @@ class Smurfs extends Component {
               />
               );
           })}
-        </ul>
+        </div>
       </div>
     );
   }
