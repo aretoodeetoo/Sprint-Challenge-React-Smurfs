@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import Smurf from './Smurf';
 
@@ -20,6 +21,8 @@ class Smurfs extends Component {
             );
           })}
         </ul>
+        <Link to={`/smurf-form`} style={{textDecoration: 'none', color: 'blue'}}>Go Here to Add New Smurfs</Link>
+        <Link to={`/`} style={{textDecoration: 'none', color: 'blue'}}>Or If You Prefer, Head Home</Link>
       </div>
     );
   }
