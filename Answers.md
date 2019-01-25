@@ -6,6 +6,6 @@
 3.  What does CRUD stand for?
     Create, Read, Update, and Delete.
 4.  Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
-    POST -> Create; DESTROY or DELETE -> Delete; and PUT -> Update.
+    POST -> Create; GET -> Read; DESTROY or DELETE -> Delete; and PUT -> Update.
 5.  Mention three tools we can use to make AJAX requests
     Three tools we can use to make AJAX requests are .fetch(), .get(), and .post(). Each of these is accompanied by chained methods: .then() and .catch().
