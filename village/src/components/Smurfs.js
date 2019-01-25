@@ -6,12 +6,13 @@ import Smurf from './Smurf';
 
 // const baseUrl = 'https://localhost:3333';
 
-function Smurfs(props){
+class Smurfs extends Component {
+  render() {
     return (
       <div className="Smurfs">
         <h1 className="villageHeader">Smurf Village</h1>
         <ul>
-          {props.smurfs.map(smurf => {
+          {this.props.smurfs.map(smurf => {
             return (
               <Smurf
                 name={smurf.name}
@@ -19,13 +20,14 @@ function Smurfs(props){
                 age={smurf.age}
                 height={smurf.height}
                 key={smurf.id}
-                deleteSmurf={props.deleteSmurf}
+                deleteSmurf={this.props.deleteSmurf}
               />
-            );
+              );
           })}
         </ul>
       </div>
     );
+  }
 }
 
 Smurf.defaultProps = {

@@ -9,10 +9,21 @@ class SmurfForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
+      smurf: {name: '',
       age: '',
       height: ''
+    },
+      isUpdating: false
     };
+  }
+
+   handleSubmit = e => {
+    e.preventDefault();
+    if (this.state.isUpdating) {
+      this.updateSmurf();
+    } else {
+      this.addSmurf();
+    }
   }
 
   addSmurf = event => {
@@ -36,20 +47,25 @@ class SmurfForm extends Component {
     // });
   }
 
-  // addSmurf = event => {
-  //   event.preventDefault();
-  //   axios
-  //   .post(`${baseUrl}/smurfs`, this.state.smurf)
-  //   .then(res => {
-  //     console.log(res);
-  //     this.setState({ smurfs: res.data });
-  //     this.props.history.push('/smurfs');
-  //   })
-  //   .catch(err => {
-  //     console.log('Ya done smurfed it up again!');
-  //   })
-  //   // add code to create the smurf using the api
-  // }
+  updateSmurf = () => {
+    axios
+      .put(`${baseUrl}/smurfs/${this.state.smurf.id}`, this.state.smurf)
+      .then(res => {
+        this.setState({
+          smurfs: res.data,
+          isUpdating: false,
+          smurf: {
+            name: '',
+            age: '',
+            height: ''
+          }
+        });
+        this.props.history.push('/smurfs')
+      })
+      .catch(err => {
+        console.log('Update fn is not working');
+      })
+  }
 
   handleInputChange = e => {
     this.setState({ [e.target.name]: e.target.value });
