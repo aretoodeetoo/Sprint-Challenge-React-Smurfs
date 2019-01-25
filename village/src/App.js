@@ -5,6 +5,7 @@ import { Route, Link } from 'react-router-dom';
 import './App.css';
 import SmurfForm from './components/SmurfForm';
 import Smurfs from './components/Smurfs';
+import Smurf from './components/Smurf';
 import NavBar from './components/NavBar';
 import smurfImg from './helloSmurf.jpg';
 
@@ -67,6 +68,7 @@ class App extends Component {
       </div>
       <Route exact path="/smurf-form" render={props => <SmurfForm {...props}/> } />
       <Route exact path="/smurfs" render={props => <Smurfs {...props} smurfs={this.state.smurfs} deleteSmurf={this.deleteSmurf} />} />
+      <Route path="/smurfs/:smurfId" render={props => <Smurf {...props} deleteSmurf={this.deleteSmurf} smurfs={this.state.smurfs}/> } />
       </div>
       </div>
     );
