@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import { Link } from 'react-router-dom';
+import './SmurfForm.css';
 
 const baseUrl = 'http://localhost:3333';
 
@@ -77,10 +77,8 @@ class SmurfForm extends Component {
             value={this.state.height}
             name="height"
           />
-          <button type="submit">Add to the village</button>
+          <button type="submit" className="addFormButton">Add to the village</button>
         </form>
-        <Link to={`/smurfs`} style={{textDecoration: 'none', color: 'blue'}}>Go See Your Smurf Residents Here!</Link>
-        <Link to={`/`} style={{textDecoration: 'none', color: 'blue'}}>Or If You Prefer, Head Home</Link>
       </div>
     );
   }

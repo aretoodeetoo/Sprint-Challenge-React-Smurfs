@@ -35,12 +35,16 @@ class App extends Component {
     return (
       <div className="App">
       <NavBar />
+      <div className="homeBody">
       <h2>Hello! We're So Glad You're Here!</h2>
       <h3>Use The Links Below to Navigate This Site</h3>
+      <div className="mainPageSmurfLinks">
       <Link to={`/smurfs`} style={{textDecoration: 'none', color: 'blue'}}>Locate Smurf Residents Here</Link>
       <Link to={`/smurfs`} style={{textDecoration: 'none', color: 'blue'}}>Add New Smurf Residents Here</Link>
+      </div>
       <Route exact path="/smurf-form" render={props => <SmurfForm {...props}/> } />
       <Route exact path="/smurfs" render={props => <Smurfs {...props} smurfs={this.state.smurfs} />} />
+      </div>
       </div>
     );
   }
