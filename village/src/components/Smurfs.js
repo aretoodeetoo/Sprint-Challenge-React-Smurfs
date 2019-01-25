@@ -1,13 +1,30 @@
 import React, { Component } from 'react';
-import './SmurfVillage.css';
+import axios from 'axios';
 
+import './SmurfVillage.css';
 import Smurf from './Smurf';
 
+const baseUrl = 'https://localhost:3333';
+
 class Smurfs extends Component {
+
+  deleteSmurf = smurfId => {
+    axios
+      .delete(`${baseUrl}/smurfs/${smurfId}`)
+      .then(res => {
+        console.log(res)
+        this.setState({ smurfs: res.data })
+        this.props.history.push('/smurfs')
+      })
+      .catch(err => {
+        console.log('You have smurfed up deleting Smurfs')
+      })
+  } 
+
   render() {
     return (
       <div className="Smurfs">
-        <h1>Smurf Village</h1>
+        <h1 className="villageHeader">Smurf Village</h1>
         <ul>
           {this.props.smurfs.map(smurf => {
             return (
@@ -17,6 +34,7 @@ class Smurfs extends Component {
                 age={smurf.age}
                 height={smurf.height}
                 key={smurf.id}
+                deleteSmurf={this.deleteSmurf}
               />
             );
           })}
