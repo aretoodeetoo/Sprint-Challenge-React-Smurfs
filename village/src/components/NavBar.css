@@ -1,0 +1,9 @@
+.navBarWrapper{
+    background-image: url('./smurfHeaderBgOne.jpg');
+    height: 100px;
+}
+
+.navLinkStyles{
+    display: flex;
+    justify-content: space-around;
+}
